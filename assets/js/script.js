@@ -205,10 +205,6 @@
         loop: true,
         speed: 1000,
         parallax: true,
-        autoplay: {
-            delay: 6500,
-            disableOnInteraction: false,
-        },
         watchSlidesProgress: true,
         pagination: {
             el: '.swiper-pagination',
@@ -813,11 +809,12 @@
     if ($("#clock2").length) {
         $('#clock2').countdown('2025/06/11', function(event) {
             var $this = $(this).html(event.strftime(''
-            + '<div class="box"><div><div class="time">%m</div> <span>Month</span> </div></div>'
+            
             + '<div class="box"><div><div class="time">%D</div> <span>Days</span> </div></div>'
             + '<div class="box"><div><div class="time">%H</div> <span>Hours</span> </div></div>'
             + '<div class="box"><div><div class="time">%M</div> <span>Mins</span> </div></div>'
-            + '<div class="box"><div><div class="time">%S</div> <span>Secs</span> </div></div>'));
+             + '<div class="box"><div><div class="time">%S</div> <span>Secs</span> </div></div>'
+            ));
         });
     }
 
@@ -957,7 +954,24 @@
         });
     }
 
+$(window).on('load', function() {
+    // ...existing code...
 
+    // Try to autoplay background music
+    var bgMusic = document.getElementById('bg-music');
+    if (bgMusic) {
+            bgMusic.volume = 0.1; // Set volume (0.0 = muted, 1.0 = max)
+
+        var playPromise = bgMusic.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(function(error) {
+                // Autoplay was prevented.
+                // Optionally show a play button here.
+                console.log('Autoplay prevented. User interaction is required to play the music.');
+            });
+        }
+    }
+});
     /*==========================================================================
         WHEN DOCUMENT LOADING
     ==========================================================================*/
