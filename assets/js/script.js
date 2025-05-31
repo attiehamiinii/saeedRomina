@@ -954,24 +954,7 @@
         });
     }
 
-$(window).on('load', function() {
-    // ...existing code...
 
-    // Try to autoplay background music
-    var bgMusic = document.getElementById('bg-music');
-    if (bgMusic) {
-            bgMusic.volume = 0.1; // Set volume (0.0 = muted, 1.0 = max)
-
-        var playPromise = bgMusic.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(function(error) {
-                // Autoplay was prevented.
-                // Optionally show a play button here.
-                console.log('Autoplay prevented. User interaction is required to play the music.');
-            });
-        }
-    }
-});
     /*==========================================================================
         WHEN DOCUMENT LOADING
     ==========================================================================*/
@@ -1005,7 +988,25 @@ $(window).on('load', function() {
 
     });
 
-
+$(window).on('load', function() {
+    var bgMusic = document.getElementById('bg-music');
+    if (bgMusic) {
+        bgMusic.volume = 0.2;
+        var tryPlay = function() {
+            bgMusic.play();
+            document.removeEventListener('click', tryPlay);
+            document.removeEventListener('keydown', tryPlay);
+        };
+        var playPromise = bgMusic.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(function(error) {
+                // Listen for first user interaction on page
+                document.addEventListener('click', tryPlay);
+                document.addEventListener('keydown', tryPlay);
+            });
+        }
+    }
+});
     /*==========================================================================
         WHEN WINDOW RESIZE
     ==========================================================================*/
