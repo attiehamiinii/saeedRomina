@@ -288,7 +288,8 @@ document.addEventListener('DOMContentLoaded', function() {
             preloader.style.display = 'none';
             if(mainContent) mainContent.style.display = 'block';
         }, 600); // Match your CSS transition
-
+        // Initialize WOW.js
+        wow.init();
         // Play music
         if(bgMusic) {
             bgMusic.volume = 0.2;
