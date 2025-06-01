@@ -266,7 +266,22 @@
     function preloader() {
         if($('.preloader').length) {
             $('.preloader').delay(100).fadeOut(500, function() {
-
+          var bgMusic = document.getElementById('bg-music');
+            if (bgMusic) {
+                bgMusic.volume = 0.2;
+                var playPromise = bgMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(function() {
+                        // Autoplay blocked, optionally show a play button here
+                        console.log('Autoplay prevented. User interaction is required.');
+                        // Example: Show a play button (uncomment to use)
+                        // $('#play-music-btn').show().on('click', function(){
+                        //     bgMusic.play();
+                        //     $(this).hide();
+                        // });
+                    });
+                }
+            }
                 //active wow
                 wow.init();
 

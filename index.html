@@ -36,9 +36,11 @@
                 <div class="content">
                     <div class="loader-circle"></div>
                     <div class="loader-line-mask">
-                        <div class="loader-line"></div>
+                        <div id="play-music-btn" class="loader-line"></div>
                     </div>
-                    <img src="assets/images/preloader.png" alt="">
+                     <audio id="bg-music" src="assets/music.mp3" loop></audio>
+    
+                    <img  src="assets/images/preloader.png" alt="">
                 </div>
             </div>
         </div>
@@ -87,7 +89,7 @@
 
 
         <section class="wpo-contact-section " id="RSVP">
-        <iframe src="assets/music.mp4" allow="autoplay"  style="display: none;">  </iframe>
+     
                             <!-- <video  src="assets/music.mp4" autoplay loop     style="display: none;" ></video> -->
             <div class="container" style="padding-top: 30px; padding-bottom: 30px;">
                 
@@ -284,20 +286,7 @@
     <script src="assets/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
-    <script>
-window.addEventListener('DOMContentLoaded', function() {
-    var video = document.getElementById('myVideo');
-    if (video) {
-        video.muted = false;  // Redundant if already in HTML, but safe.
-        video.setAttribute('playsinline', ''); // Ensure it plays inline on mobile
-        video.setAttribute('autoplay', ''); // Ensure it autoplays
-        video.play().catch(function(e) {
-            // Shouldn't fail if muted, but logs error if it does
-            console.log('Autoplay failed:', e);
-        });
-    }
-});
-</script>
+
 </body>
 
 </html>
