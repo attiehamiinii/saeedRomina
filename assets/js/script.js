@@ -988,25 +988,7 @@
 
     });
 
-$(window).on('load', function() {
-    var bgMusic = document.getElementById('bg-music');
-    if (bgMusic) {
-        bgMusic.volume = 0.2;
-        var tryPlay = function() {
-            bgMusic.play();
-            document.removeEventListener('click', tryPlay);
-            document.removeEventListener('keydown', tryPlay);
-        };
-        var playPromise = bgMusic.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(function(error) {
-                // Listen for first user interaction on page
-                document.addEventListener('click', tryPlay);
-                document.addEventListener('keydown', tryPlay);
-            });
-        }
-    }
-});
+
     /*==========================================================================
         WHEN WINDOW RESIZE
     ==========================================================================*/
@@ -1020,6 +1002,22 @@ $(window).on('load', function() {
         }, 200));
     });
 
+(function() {
+    var bgMusic = document.getElementById('bg-music');
+    var playBtn = document.getElementById('play-music-btn');
+    var musicPlayed = false;
+
+    function playMusicOnScroll() {
+        if (bgMusic && !musicPlayed) {
+            bgMusic.play();
+            musicPlayed = true;
+            if (playBtn) playBtn.style.display = 'none';
+            window.removeEventListener('scroll', playMusicOnScroll);
+        }
+    }
+
+    window.addEventListener('scroll', playMusicOnScroll);
+})();
 
     // color-variation
 
