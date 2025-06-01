@@ -1002,22 +1002,27 @@
         }, 200));
     });
 
-(function() {
-    var bgMusic = document.getElementById('bg-music');
-    var playBtn = document.getElementById('play-music-btn');
-    var musicPlayed = false;
-
-    function playMusicOnScroll() {
-        if (bgMusic && !musicPlayed) {
-            bgMusic.play();
-            musicPlayed = true;
-            if (playBtn) playBtn.style.display = 'none';
-            window.removeEventListener('scroll', playMusicOnScroll);
-        }
-    }
-
-    window.addEventListener('scroll', playMusicOnScroll);
-})();
+// $(window).on('load', function() {
+//     var bgMusic = document.getElementById('bg-music');
+  
+//     if (bgMusic) {
+//         bgMusic.volume = 0.2;
+//         var playPromise = bgMusic.play();
+//         if (playPromise !== undefined) {
+//             playPromise.catch(function(error) {
+//                 // Autoplay was prevented, show play button
+//                 if (playBtn) playBtn.style.display = 'block';
+//                 console.log('Autoplay prevented. User interaction is required to play the music.');
+//             });
+//         }
+//     }
+//     if (playBtn) {
+//         playBtn.addEventListener('click', function() {
+//             bgMusic.play();
+//             playBtn.style.display = 'none';
+//         });
+//     }
+// });
 
     // color-variation
 
