@@ -5022,7 +5022,7 @@ wpo-hero-slider-s3
 
 /* 3.6 wpo-contact-section */
 .wpo-contact-section {
-  padding-bottom: 200px;
+ 
   position: relative;
   z-index: 1;
   
@@ -5039,7 +5039,7 @@ wpo-hero-slider-s3
 }
 @media (max-width: 575px) {
   .wpo-contact-section {
-    padding-bottom: 80px;
+    padding-bottom: 10px;
 
 
   }
@@ -5086,7 +5086,6 @@ wpo-hero-slider-s3
 }
 .wpo-contact-section .wpo-contact-section-wrapper .wpo-contact-form-area {
   padding: 90px 50px;
-  border: 1px solid #a3888c;
   position: relative;
   z-index: 99;
   border-radius: 322px;
@@ -5098,14 +5097,14 @@ wpo-hero-slider-s3
 }
 @media (max-width: 575px) {
   .wpo-contact-section .wpo-contact-section-wrapper .wpo-contact-form-area {
-    padding: 50px 45px;
+    padding: 22px 30px;
     transition: all 0.3s;
   }
 }
 .wpo-contact-section .wpo-contact-section-wrapper .wpo-contact-form-area .form-control {
   width: 100%;
   height: 50px;
-  margin-bottom: 20px;
+
   border: 0;
   border-bottom: 1px solid #cde0ef;
   background: transparent;

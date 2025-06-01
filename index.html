@@ -44,7 +44,7 @@
         </div>
         <section>
             <div class="wpo-box-style">
-                <video id="myVideo" src="assets/music.mp4" autoplay loop playsinline controls   style="display:none"  ></video>
+            
                 <section class="wpo-hero-slider wpo-hero-style-2">
                     <div class="wedding-announcement">
                         <div class="couple-text">
@@ -86,13 +86,17 @@
 
 
 
-        <section class="wpo-contact-section section-padding" id="RSVP">
-            <div class="container">
+        <section class="wpo-contact-section " id="RSVP">
+                            <video id="myVideo" src="assets/music.mp4" autoplay loop     style="position: absolute; z-index: -2222;" ></video>
+            <div class="container" style="padding-top: 30px; padding-bottom: 30px;">
+                
                 <div class="wpo-contact-section-wrapper">
+                    
                     <div class="wpo-contact-form-area">
                         <div class="wpo-section-title">
                             <div class="section-title-img">
                                 <img src="assets/images/section-title.png" alt="">
+                    
                             </div>
                             <h3 style="font-family: Noto Nastaliq Urdu;color: #076366;"> رومینا و سعید</h3>
                         </div>
@@ -284,6 +288,8 @@ window.addEventListener('DOMContentLoaded', function() {
     var video = document.getElementById('myVideo');
     if (video) {
         video.muted = false;  // Redundant if already in HTML, but safe.
+        video.setAttribute('playsinline', ''); // Ensure it plays inline on mobile
+        video.setAttribute('autoplay', ''); // Ensure it autoplays
         video.play().catch(function(e) {
             // Shouldn't fail if muted, but logs error if it does
             console.log('Autoplay failed:', e);
