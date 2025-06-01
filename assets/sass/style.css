@@ -5050,7 +5050,8 @@ wpo-hero-slider-s3
   margin: 0 auto;
   padding: 0px 40px;
   background: #fff;
-  border-radius: 250px;
+  border-radius: 322px;
+  box-shadow: 0px 0px 6.1px 3.9px rgba(28, 31, 86, 0.06);
 }
 @media (max-width: 1200px) {
   .wpo-contact-section .wpo-contact-section-wrapper {
