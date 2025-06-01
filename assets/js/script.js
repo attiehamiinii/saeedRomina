@@ -263,34 +263,42 @@
     /*------------------------------------------
         = HIDE PRELOADER
     -------------------------------------------*/
-    function preloader() {
-        if($('.preloader').length) {
-            $('.preloader').delay(100).fadeOut(500, function() {
-          var bgMusic = document.getElementById('bg-music');
-            if (bgMusic) {
-                bgMusic.volume = 0.2;
-                var playPromise = bgMusic.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(function() {
-                        // Autoplay blocked, optionally show a play button here
-                        console.log('Autoplay prevented. User interaction is required.');
-                        // Example: Show a play button (uncomment to use)
-                        // $('#play-music-btn').show().on('click', function(){
-                        //     bgMusic.play();
-                        //     $(this).hide();
-                        // });
-                    });
-                }
-            }
-                //active wow
-                wow.init();
+    // function preloader() {
+    //     if($('.preloader').length) {
+    //         $('.preloader').delay(100).fadeOut(500, function() {
+
+    //             //active wow
+    //             wow.init();
 
 
 
+    //         });
+    //     }
+    // }
+document.addEventListener('DOMContentLoaded', function() {
+    var startBtn = document.getElementById('start-btn');
+    var preloader = document.querySelector('.preloader');
+    var mainContent = document.getElementById('main-content');
+    var bgMusic = document.getElementById('bg-music');
+
+    startBtn.addEventListener('click', function() {
+        // Fade out preloader
+        preloader.style.opacity = 0;
+        setTimeout(function() {
+            preloader.style.display = 'none';
+            if(mainContent) mainContent.style.display = 'block';
+        }, 600); // Match your CSS transition
+
+        // Play music
+        if(bgMusic) {
+            bgMusic.volume = 0.2;
+            bgMusic.play().catch(function(e){
+                // If blocked, user has already clicked, so try again
+                bgMusic.play();
             });
         }
-    }
-
+    });
+});
 
     /*------------------------------------------
         = WOW ANIMATION SETTING
